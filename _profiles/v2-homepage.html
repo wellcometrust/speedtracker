@@ -3,12 +3,12 @@
 # The human-friendly name of the profile. Whenever you're asked for the profile
 # ID, it refers to the name of the profile file — in this case, "default".
 #
-name: "Wellcome Collection V2 Homepage"
+name: "V2: Homepage"
 
 #
 # The default profile will be the one shown when accessing the root URL of your
 # SpeedTracker site.
-# 
+#
 default: true
 
 #
@@ -37,12 +37,12 @@ parameters:
 # https://github.com/speedtracker/speedtracker-api/blob/master/lib/SpeedTracker.js#L18-L37
 #
 budgets:
-#  -
-#    metric: TTFB
-#    max: 600
-#    alerts: ["emailAlert", "slackAlert"]
   -
     metric: firstPaint
-    max: 100
+    max: 1500
+    alerts: ["slackAlert"]
+  -
+    metric: SpeedIndex
+    max: 2500
     alerts: ["slackAlert"]
 ---
