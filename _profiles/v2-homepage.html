@@ -23,7 +23,7 @@ interval: 12
 #
 parameters:
   connectivity: "Cable"
-  location: "Dulles:Chrome"
+  location: "Manchester"
   runs: 1
   url: "https://next.wellcomecollection.org/"
 
@@ -37,6 +37,10 @@ parameters:
 # https://github.com/speedtracker/speedtracker-api/blob/master/lib/SpeedTracker.js#L18-L37
 #
 budgets:
+  -
+    metric: TTFB
+    max: 500
+    alerts: ["slackAlert"]
   -
     metric: firstPaint
     max: 1500
