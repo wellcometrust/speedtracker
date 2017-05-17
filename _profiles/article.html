@@ -3,7 +3,7 @@
 # The human-friendly name of the profile. Whenever you're asked for the profile
 # ID, it refers to the name of the profile file — in this case, "default".
 #
-name: "V1: Article"
+name: "Article"
 
 #
 # The default profile will be the one shown when accessing the root URL of your
@@ -16,16 +16,16 @@ default: true
 # with a minimum value of 12, as only two scheduled tests per day are allowed.
 # To disabled repeated tests, simply remove this property from the profile.
 #
-interval: 12
+interval: 24
 
 #
 # WebPageTest test parameters
 #
 parameters:
   connectivity: "Cable"
-  location: "Dulles:Chrome"
+  location: "ec2-eu-west-1"
   runs: 1
-  url: "https://wellcomecollection.org/articles/evolution-and-influence-adamson-collection"
+  url: "https://next.wellcomecollection.org/articles/a-drop-in-the-ocean-daniel-regan"
 
 #
 # Performance budgets are defined with a metric id, a max/min allowed value
@@ -36,13 +36,17 @@ parameters:
 #
 # https://github.com/speedtracker/speedtracker-api/blob/master/lib/SpeedTracker.js#L18-L37
 #
-# budgets:
-#  -
-#    metric: TTFB
-#    max: 600
-#    alerts: ["emailAlert", "slackAlert"]
-#  -
-#    metric: firstPaint
-#    max: 100
-#    alerts: ["slackAlert"]
+budgets:
+  -
+    metric: TTFB
+    max: 500
+    alerts: ["slackAlert"]
+  -
+    metric: firstPaint
+    max: 1500
+    alerts: ["slackAlert"]
+  -
+    metric: SpeedIndex
+    max: 2500
+    alerts: ["slackAlert"]
 ---
